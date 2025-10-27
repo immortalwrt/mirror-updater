@@ -17,13 +17,13 @@ jobs:
       matrix:
         branch:
           - master
-          - openwrt-23.05
+          - openwrt-24.10
       fail-fast: false
       max-parallel: 1
 
     steps:
       - name: Checkout the Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Init Compilation Dependencies
         env:
@@ -34,7 +34,7 @@ jobs:
           sudo -E apt-get -qq clean
 
       - name: Checkout ImmortalWrt Source Tree on Branch ${{ matrix.branch }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "immortalwrt/immortalwrt"
           ref: ${{ matrix.branch }}
