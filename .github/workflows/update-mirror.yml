@@ -18,6 +18,7 @@ jobs:
         branch:
           - master
           - openwrt-24.10
+          - openwrt-25.12
       fail-fast: false
       max-parallel: 1
 
