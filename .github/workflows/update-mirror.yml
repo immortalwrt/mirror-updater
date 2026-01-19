@@ -50,7 +50,13 @@ jobs:
       - name: Download Packages
         run: |
           cd "immortalwrt"
-          echo -e "CONFIG_ALL=y" > ".config"
+          cat <<-EOF | tee ".config"
+          CONFIG_TARGET_x86=y
+          CONFIG_TARGET_x86_64=y
+          CONFIG_ALL_KMODS=y
+          CONFIG_ALL_NONSHARED=y
+          CONFIG_ALL=y
+          EOF
           make defconfig
           make download -j8
           find dl -size -1024c -exec rm -f {} \;
